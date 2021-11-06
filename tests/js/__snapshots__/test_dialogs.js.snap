@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createDialogNode 1`] = `
+<form class="dialog" id="3" data-hash="321">
+  <a href="/dialogs/u3">3: some text</a
+  ><button type="submit" name="Delete">x</button><br />
+</form>
+`;
+
+exports[`createDialogNode 2`] = `
+<form class="dialog" id="3" data-hash="321">
+  <a href="/dialogs/u3" class="is-unread">3: some text</a
+  ><button type="submit" name="Delete">x</button><br />
+</form>
+`;
+
+exports[`socketOnMessageHandler delete_dialog 1`] = `
+<body>
+  <a href="/url/" id="dialogs-link" class="in-dialogs unread-dialogs-exist"
+    >Dialogs (1)</a
+  >
+  <div id="dialogs">
+    <form class="dialog" id="2" data-hash="200">
+      <a href="/dialogs/u2" class="is-unread">2: some text</a
+      ><button type="submit" name="Delete">x</button><br />
+    </form>
+  </div>
+</body>
+`;
+
+exports[`socketOnMessageHandler delete_dialog 2`] = `
+<body>
+  <a href="/url/" id="dialogs-link" class="in-dialogs">Dialogs</a>
+  <div id="dialogs"></div>
+</body>
+`;
+
+exports[`socketOnMessageHandler get_dialogs 1`] = `
+<body>
+  <a href="/url/" id="dialogs-link" class="in-dialogs unread-dialogs-exist"
+    >Dialogs (1)</a
+  >
+  <div id="dialogs">
+    <form class="dialog" id="2" data-hash="500">
+      <a href="/dialogs/u2" class="is-unread">2: some text</a
+      ><button type="submit" name="Delete">x</button><br />
+    </form>
+  </div>
+</body>
+`;
+
+exports[`socketOnMessageHandler get_new_message dialog didn't exist 1`] = `
+<body>
+  <a href="/url/" id="dialogs-link" class="in-dialogs unread-dialogs-exist"
+    >Dialogs (1)</a
+  >
+  <div id="dialogs">
+    <form class="dialog" id="2" data-hash="400">
+      <a href="/dialogs/u2" class="is-unread">2: some text</a
+      ><button type="submit" name="Delete">x</button><br />
+    </form>
+  </div>
+</body>
+`;
+
+exports[`socketOnMessageHandler get_new_message dialog existed 1`] = `
+<body>
+  <a href="/url/" id="dialogs-link" class="in-dialogs unread-dialogs-exist"
+    >Dialogs (1)</a
+  >
+  <div id="dialogs">
+    <form class="dialog" id="2" data-hash="400">
+      <a href="/dialogs/u2" class="is-unread">2: some text</a
+      ><button type="submit" name="Delete">x</button><br />
+    </form>
+    <form class="dialog" id="1" data-hash="300">
+      <a href="/dialogs/u1">1: some text</a
+      ><button type="submit" name="Delete">x</button><br />
+    </form>
+  </div>
+</body>
+`;
+
+exports[`socketOnMessageHandler mark_dialog_as_read 1`] = `
+<body>
+  <a href="/url/" id="dialogs-link" class="in-dialogs">Dialogs</a>
+  <div id="dialogs">
+    <form class="dialog" id="1" data-hash="300">
+      <a href="/dialogs/u1">1: some text</a
+      ><button type="submit" name="Delete">x</button><br />
+    </form>
+    <form class="dialog" id="2" data-hash="200">
+      <a href="/dialogs/u2" class="">2: some text</a
+      ><button type="submit" name="Delete">x</button><br />
+    </form>
+  </div>
+</body>
+`;
+
+exports[`updateDialogsLink no unread 1`] = `
+<a href="/url/" id="dialogs-link" class="in-dialogs">Dialogs</a>
+
+`;
+
+exports[`updateDialogsLink with unread 1`] = `
+<a href="/url/" id="dialogs-link" class="in-dialogs unread-dialogs-exist"
+  >Dialogs (1)</a
+>
+`;

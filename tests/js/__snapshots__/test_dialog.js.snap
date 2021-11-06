@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createMessageNode 1`] = `
+<pre
+  class="message"
+  data-hash="200"
+  data-time="2020.10.19 20:59Z"
+><b class="time">19.10</b> (from me): text1</pre>
+`;
+
+exports[`createMessageNode 2`] = `
+<pre
+  class="message"
+  data-hash="400"
+  data-time="2020.10.19 21:01Z"
+><b class="time">00:01</b> (to me): text2</pre>
+`;
+
+exports[`socketOnMessageHandler get_messages no send 1`] = `
+<div id="dialog-messages">
+  <pre
+    class="message"
+    data-hash="500"
+    data-time="2021.07.02 00:37Z"
+  ><b class="time">02.07</b> (from me): text1</pre>
+  <pre
+    class="message"
+    data-hash="400"
+    data-time="2021.02.02 00:27Z"
+  ><b class="time">02.02</b> (to me): text2</pre>
+</div>
+`;
+
+exports[`socketOnMessageHandler get_messages replacement 1`] = `
+<div id="dialog-messages">
+  <pre
+    class="message"
+    data-hash="400"
+    data-time="2021.02.02 00:27Z"
+  ><b class="time">02.02</b> (to me): text2</pre>
+</div>
+`;

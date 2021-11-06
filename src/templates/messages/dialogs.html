@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %} {% trans "Dialogs" %} {% endblock %}
+
+{% block content %}
+  <b> {% trans "Dialogs" %} </b>: <br>
+  <div id="dialogs"></div>
+  <br>
+{% endblock %}
+
+{% block js_scripts %}
+  <script type="module" src = "{% static 'messages/js/dialogs.js' %}"></script>
+{% endblock %}

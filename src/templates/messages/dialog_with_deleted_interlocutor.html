@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %} {% trans "Dialog" %} {% endblock %}
+
+{% block content %}
+  {% trans "This user was deleted" %}
+  <br>
+
+  <b> {% trans "Messages" context "User messages" %} </b>: <br>
+  <div id="dialog-messages"></div>
+{% endblock %}
+
+{% block js_scripts %}
+  <script type="module" src="{% static 'messages/js/dialog.js' %}"></script>
+{% endblock %}
