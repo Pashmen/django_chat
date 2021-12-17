@@ -47,3 +47,7 @@ def dialog_view(request, interlocutor_id):
             request,
             "messages/dialog_with_deleted_interlocutor.html"
         )
+
+
+def main_page_view(request):
+    return redirect("dialogs")

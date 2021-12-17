@@ -5,7 +5,7 @@
 {% block title %} {{interlocutor.id}} {% trans "Dialog" %} {% endblock %}
 
 {% block content %}
-  <a href="{% url 'user' interlocutor.id %}"> {{interlocutor.email}} </a>
+  {% trans "User" %} {{interlocutor.id}} </a>
   <br>
 
   <b> {% trans "Messages" context "User messages" %} </b>: <br>

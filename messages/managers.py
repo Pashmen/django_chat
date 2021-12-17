@@ -3,10 +3,8 @@ from itertools import chain
 import redis
 from asgiref.sync import sync_to_async
 from django.conf import settings
-from django.db import connection
 from django.db import models
 from django.db.models import F
-from django.utils import timezone
 
 
 class MessagesManager(models.Manager):
@@ -106,45 +104,6 @@ class MessagesManager(models.Manager):
             receiver_id=user1_id,
             is_deleted_by_receiver=False
         ).update(is_deleted_by_receiver=True)
-
-    def get_users_to_notify(self):
-        since_time = timezone.now() - timezone.timedelta(
-            seconds=settings.FS_NEW_MESSAGES_PERIOD
-        )
-        query = """
-        SELECT users.email, new_messages.number
-        FROM accounts_customuser AS users
-        INNER JOIN(
-            SELECT
-                owner_id
-            FROM accounts_settings
-            WHERE accounts_settings.notify_about_new_messages
-        ) AS settings ON users.id = settings.owner_id
-        INNER JOIN(
-            SELECT
-                COUNT(messages.receiver_id) AS number,
-                messages.receiver_id AS user_id
-            FROM custom_messages_message AS messages
-            WHERE (
-                NOT messages.is_deleted_by_receiver
-                AND messages.is_unread
-                AND messages.time >= '{}'
-            )
-            GROUP BY messages.receiver_id
-        ) AS new_messages ON users.id = new_messages.user_id;
-        """.format(str(since_time))
-
-        users_info = []
-        with connection.cursor() as cursor:
-            cursor.execute(query)
-            for row in cursor.fetchall():
-                users_info.append({
-                    "method": "email",
-                    "contact": row[0],
-                    "new_messages_number": row[1]
-                })
-
-            return users_info
 
 
 class DialogIntegrityManager:

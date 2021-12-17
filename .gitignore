@@ -1,0 +1,9 @@
+*.pyc
+**/migrations/*
+sqlite3.db
+config/.env
+.coverage
+dev/explore.py
+.vscode/
+
+!**/migrations/__init__.py

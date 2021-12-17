@@ -1,0 +1,50 @@
+repos:
+- repo: local
+  hooks:
+  - id: whitespaces
+    name: Update trailing whitespaces and end of the file
+    stages: [commit]
+    entry: autopep8 -iv --select=W29,W391 --exit-code
+    'types': [text]
+    language: system
+
+  - id: python_whitespaces
+    name: Update whitespaces in Python code
+    stages: [commit]
+    entry: autopep8 -iv --select=E121,E122,E123,E126,E127,E128,E131,E211,E224,E225,E231,E24,E251,E252,E27,E3,E502,W504 --exit-code
+    'types': [python]
+    language: system
+
+  - id: reorder-python-imports
+    name: Reorder imports in Python code
+    stages: [commit]
+    entry: reorder-python-imports
+    language: system
+    types: [python]
+
+  - id: python-linting
+    name: Check variables, unused imports, long lines in Python code
+    stages: [commit]
+    entry: pylint --disable=all --enable=variables,C0301 --max-line-length=80 --score=n --output-format=colorized --exit-zero
+    'types': [python]
+    exclude: ^config/settings/*
+    language: system
+    verbose: true
+
+  - id: python-testing
+    name: Run Python tests
+    stages: [commit]
+    entry: pipenv run coverage run --rcfile=dev/coverage/.coveragerc manage.py test --parallel=1
+    always_run: true
+    pass_filenames: false
+    language: system
+    verbose: true
+
+  - id: py-coverage
+    name: Check coverage of Python tests
+    stages: [commit]
+    entry: pipenv run coverage report --rcfile=dev/coverage/.coveragerc
+    always_run: true
+    pass_filenames: false
+    language: system
+    verbose: true

@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "~=3.2"
+channels = "*"
+channels-redis = "*"
+redis = "*"
+
+[dev-packages]
+pre-commit = "*"
+autopep8 = "*"
+reorder-python-imports = "*"
+pylint = "*"
+django-coverage-plugin = "*"
+coverage = "==6.0b1"
+
+[requires]
+python_version = "3.8"

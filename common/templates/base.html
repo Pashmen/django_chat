@@ -1,0 +1,41 @@
+{% load static %}
+{% load i18n %}
+{% load settings %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Title{% endblock %}</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'common/css/base.css' %}">
+</head>
+<body>
+  {% if user.is_authenticated %}
+    {% if not user.unread_dialogs_exist %}
+      <a href="{% url 'dialogs' %}" id="dialogs-link">{% trans "Dialogs" %}</a> |
+    {% else %}
+      <a href="{% url 'dialogs' %}" id="dialogs-link" class="unread-dialogs-exist">{% trans "Dialogs" %}</a> |
+    {% endif %}
+    <a href="{% url 'logout' %}" id="logout"> {% trans "Log Out" %} </a>
+  {% else %}
+    <a href="{% url 'login' %}"> {% trans "Log In" %} </a>
+  {% endif %}
+
+  <hr>
+  {% block content %} {% endblock %}
+
+  {% if user.is_authenticated %}
+    {% settings "DEBUG" as settings_debug %}
+    {% if settings_debug %}
+      <div id="is_debug" data-is-debug="true" style="display: none"></div>
+    {% else %}
+      <div id="is_debug" data-is-debug="false" style="display: none"></div>
+    {% endif %}
+
+    <script type="text/javascript" src="{% static 'common/js/base.js' %}"></script>
+  {% endif %}
+
+  {% block js_scripts %} {% endblock %}
+</body>
+</html>
