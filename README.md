@@ -1,5 +1,5 @@
 # django_chat
 
-This chat is a part of my Django project. At this moment purpose of this project to show my skills and this code doesn't work without other parts of my project
+This is a standalone project where there's messages application (instant messaging).
 
 Using Django, Postgresql, Redis, WebSockets

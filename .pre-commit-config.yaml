@@ -31,6 +31,15 @@ repos:
     language: system
     verbose: true
 
+  - id: js-linting
+    name: JavaScript linting
+    stages: [commit]
+    entry: dev/js/node_modules/.bin/eslint -c dev/js/.eslintrc.json
+    'types': [javascript]
+    exclude: ^(dev/js/node_modules/*|dev/py/coverage/*)$
+    language: system
+    verbose: true
+
   - id: python-testing
     name: Run Python tests
     stages: [commit]
@@ -44,6 +53,15 @@ repos:
     name: Check coverage of Python tests
     stages: [commit]
     entry: pipenv run coverage report --rcfile=dev/py/coverage/.coveragerc
+    always_run: true
+    pass_filenames: false
+    language: system
+    verbose: true
+
+  - id: js-testing
+    name: Run js tests
+    stages: [commit]
+    entry: dev/js/node_modules/.bin/jest --config dev/js/jest.config.json --coverage --silent
     always_run: true
     pass_filenames: false
     language: system

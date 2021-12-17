@@ -1,9 +1,11 @@
 *.pyc
 **/migrations/*
 sqlite3.db
-config/.env
-.coverage
+dev/js/node_modules/*
+dev/js/coverage/*
+dev/py/coverage/report/*
 dev/explore.py
+.coverage
 .vscode/
 
 !**/migrations/__init__.py
