@@ -1,7 +1,40 @@
+html {
+  overflow-y: scroll;
+  overflow-x:hidden;
+}
+
 body {
+  position: absolute;
   background-color: #feffde;
 }
 
-.covered {
-  background-color: #B2FF66;
+.unread-dialogs-exist.in-dialogs {
+  background-color: green;
+  color: white;
+}
+
+.unread-dialogs-exist {
+  background-color: yellow;
+}
+
+.is-unread {
+  background-color: green;
+  color: white;
+}
+
+.notification {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  padding: 15px;
+  border-radius: 4px;
+  opacity: 0.85;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+
+.error {
+  color: white;
+  background-color: #F66161;
 }

@@ -28,8 +28,8 @@ class TestDialog(CustomTestCase):
             data
         )
 
-        self.assertIn("<title> 2 Dialog </title>", html_code)
-        self.assertIn('<a href="/u2/"> 2@email.com </a>', html_code)
+        self.assertIn("<title>Dialog 2</title>", html_code)
+        self.assertIn("<b>User 2</b>", html_code)
         self.assertIn("<b> Messages </b>:", html_code)
         self.assertIn('<div id="dialog-messages">', html_code)
         self.assertIn('<form id="form">', html_code)

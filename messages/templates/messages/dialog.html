@@ -2,10 +2,10 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %} {{interlocutor.id}} {% trans "Dialog" %} {% endblock %}
+{% block title %}{% trans "Dialog" %} {{ interlocutor.id }}{% endblock %}
 
 {% block content %}
-  {% trans "User" %} {{interlocutor.id}} </a>
+  <b>{% trans "User" %} {{ interlocutor.id }}</b>:
   <br>
 
   <b> {% trans "Messages" context "User messages" %} </b>: <br>

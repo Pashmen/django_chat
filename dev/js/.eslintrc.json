@@ -1,0 +1,74 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "rules": {
+        "radix": [
+            "error",
+            "always"
+        ],
+        "camelcase": [
+            "error",
+            {
+                "properties": "always"
+            }
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2
+            }
+        ],
+        "no-undef": [
+            "warn"
+        ],
+        "no-unused-vars": [
+            "warn"
+        ],
+        "max-len": [
+            "warn",
+            {
+                "code": 80
+            }
+        ],
+        "indent": [
+            "warn",
+            4
+        ],
+        "semi": [
+            "warn",
+            "always"
+        ],
+        "quotes": [
+            "warn",
+            "double"
+        ]
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "ignorePatterns": [
+        "**/coverage/**/*.js",
+        "**/node_modules/**/*.js"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "**/*.js"
+            ],
+            "env": {
+                "jest": true,
+                "node": true
+            },
+            "plugins": [
+                "jest"
+            ],
+            "rules": {
+                "jest/no-identical-title": "error",
+                "jest/valid-expect": "error"
+            }
+        }
+    ]
+}

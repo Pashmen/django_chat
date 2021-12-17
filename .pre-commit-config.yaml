@@ -34,16 +34,16 @@ repos:
   - id: python-testing
     name: Run Python tests
     stages: [commit]
-    entry: pipenv run coverage run --rcfile=dev/coverage/.coveragerc manage.py test --parallel=1
+    entry: pipenv run coverage run --rcfile=dev/py/coverage/.coveragerc manage.py test --settings=config.settings.testing
     always_run: true
     pass_filenames: false
     language: system
     verbose: true
 
-  - id: py-coverage
+  - id: python-coverage
     name: Check coverage of Python tests
     stages: [commit]
-    entry: pipenv run coverage report --rcfile=dev/coverage/.coveragerc
+    entry: pipenv run coverage report --rcfile=dev/py/coverage/.coveragerc
     always_run: true
     pass_filenames: false
     language: system

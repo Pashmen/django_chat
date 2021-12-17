@@ -1,10 +1,8 @@
 import redis
 from asgiref.sync import async_to_sync as ats
 from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.utils import timezone
 
-from accounts.models import Settings
 from dev.py.utils import CustomTestCase
 from messages.managers import DialogIntegrityManager
 from messages.managers import DialogsIntegrityManager
@@ -165,39 +163,6 @@ class TestMessagesManager(CustomTestCase):
             receiver_id=1,
             is_deleted_by_receiver=False
         ).exists())
-
-    def test_get_users_to_notify(self):
-        self.messages.append(self.manager.create(
-            sender_id=1, receiver_id=3,
-            text="message{}".format(len(self.messages)),
-            is_unread=True,
-            is_deleted_by_sender=False, is_deleted_by_receiver=False
-        ))
-        self.messages.append(self.manager.create(
-            sender_id=1, receiver_id=5,
-            text="message{}".format(len(self.messages)),
-            is_unread=True,
-            is_deleted_by_sender=False, is_deleted_by_receiver=False
-        ))
-        get_user_model().objects.create(id=1, email="1@email.com")
-        get_user_model().objects.create(id=2, email="2@email.com")
-        get_user_model().objects.create(id=4, email="4@email.com")
-        get_user_model().objects.create(id=5, email="5@email.com")
-        Settings.objects.filter(owner__in=[1, 2]).update(
-            notify_about_new_messages=True
-        )
-
-        def get_item(contact, number):
-            return {
-                "method": "email",
-                "contact": contact,
-                "new_messages_number": number
-            }
-
-        self.assertCountEqual(
-            self.manager.get_users_to_notify(),
-            [get_item("1@email.com", 2), get_item("2@email.com", 1)]
-        )
 
 
 class TestDialogIntegrityManager(CustomTestCase):

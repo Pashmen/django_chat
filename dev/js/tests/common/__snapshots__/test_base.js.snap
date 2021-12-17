@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Handling errors with window.onerror 1`] = `
+<body>
+  <div class="notification error">
+    Something happened. The page will be reloaded after 5 sec
+  </div>
+  <a href="/url" id="logout">Log Out</a>
+  <div id="is_debug" data-is-debug="true"></div>
+</body>
+`;

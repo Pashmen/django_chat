@@ -11,7 +11,7 @@ class TestMessagesForm(CustomTestCase):
             settings.FS_MAX_MESSAGE_LENGTH
         )
 
-    def test_price(self):
+    def test_text(self):
         data = {"text": "a \r\n z"}
         form = MessagesForm(data)
 

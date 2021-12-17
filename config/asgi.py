@@ -10,7 +10,7 @@ import messages.routing
 
 os.environ.setdefault(
     "DJANGO_SETTINGS_MODULE",
-    "config.settings"
+    "config.settings.development"
 )
 
 application = ProtocolTypeRouter({

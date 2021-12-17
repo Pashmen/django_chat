@@ -1,0 +1,27 @@
+[run]
+source =
+    .,
+    common/,
+    config/settings/
+omit =
+    manage.py,
+    *__init__.py*,
+    */migrations/*,
+    */tests/*,
+    */asgi.py,
+    dev/*,
+    config/settings/development.py,
+    config/settings/testing.py,
+plugins = django_coverage_plugin
+
+[report]
+show_missing = True
+skip_covered = True
+sort = Cover
+
+[html]
+skip_covered = False
+directory = dev/py/coverage/report
+
+[django_coverage_plugin]
+template_extensions = html

@@ -19,8 +19,7 @@ INSTALLED_APPS = [
     "channels",
 
     "messages",
-    "common",
-    "dev"
+    "common"
 ]
 
 MIDDLEWARE = [
@@ -49,23 +48,10 @@ TEMPLATES = [
     },
 ]
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "sqlite3.db"
-    }
-}
-
 AUTH_USER_MODEL = "common.CustomUser"
 ROOT_URLCONF = "common.urls"
 
 ASGI_APPLICATION = "config.asgi.application"
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    },
-}
 
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "Europe/Moscow"

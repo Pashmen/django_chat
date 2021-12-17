@@ -5,9 +5,13 @@ from django.urls.exceptions import NoReverseMatch
 from dev.py.utils import CustomTestCase
 from messages.views import dialog_view
 from messages.views import dialogs_view
+from messages.views import main_page_view
 
 
 class TestUrls(CustomTestCase):
+    def test_main_page(self):
+        self.assertEqual(resolve("/").func, main_page_view)
+
     def test_dialogs(self):
         self.assertEqual(reverse("dialogs"), "/dialogs/")
         self.assertEqual(resolve("/dialogs/").func, dialogs_view)

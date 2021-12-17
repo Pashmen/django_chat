@@ -23,8 +23,8 @@ class TestDialogsView(CustomTestCase):
 
     def test_nonauthorised(self):
         self.assertCustomRedirects(
-            self.URL, "/login?next=" + self.URL,
-            302, 301
+            self.URL, "/login/?next=" + self.URL,
+            302, 200
         )
 
 
@@ -32,11 +32,11 @@ class TestDialogView(CustomTestCase):
     @classmethod
     def setUpTestData(cls):
         cls.user1 = get_user_model().objects.create(
-            id=1,
+            id=1, username="1",
             email="1@email.com",
         )
         cls.user2 = get_user_model().objects.create(
-            id=2,
+            id=2, username="2",
             email="2@email.com",
         )
         cls.url1 = reverse("dialog", args=[1])
@@ -45,8 +45,8 @@ class TestDialogView(CustomTestCase):
     def test_nonauthorised(self):
         self.assertCustomRedirects(
             self.url1,
-            "/login?next=" + self.url1,
-            302, 301
+            "/login/?next=" + self.url1,
+            302, 200
         )
 
     def test_user_cant_message_self(self):
@@ -81,4 +81,12 @@ class TestDialogView(CustomTestCase):
         self.assertTemplateUsed(
             response,
             "messages/dialog_with_deleted_interlocutor.html"
+        )
+
+
+class TestMainPageView(CustomTestCase):
+    def test(self):
+        self.assertCustomRedirects(
+            "/", reverse("dialogs"),
+            302, 302
         )
