@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Account" %}{% endblock %}
+
+{% block content %}
+  <h3>{% trans "Account" %}</h3>
+
+  {% trans "Your username" %}: {{ user.username }}
+
+{% endblock %}

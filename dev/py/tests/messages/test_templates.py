@@ -29,7 +29,7 @@ class TestDialog(CustomTestCase):
         )
 
         self.assertIn("<title>Dialog 2</title>", html_code)
-        self.assertIn("<b>User 2</b>", html_code)
+        self.assertIn("<h3>User 2</h3>", html_code)
         self.assertIn("<b> Messages </b>:", html_code)
         self.assertIn('<div id="dialog-messages">', html_code)
         self.assertIn('<form id="form">', html_code)

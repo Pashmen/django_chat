@@ -12,7 +12,7 @@ class TestBase(CustomTestCase):
         html_code = self.render("base.html")
 
         self.assertIn(
-            '<a href="{}"> Log In'.format(reverse("login")),
+            '<a href="{}">Log In'.format(reverse("login")),
             html_code
         )
 
@@ -21,9 +21,12 @@ class TestBase(CustomTestCase):
             "base.html", is_authorised=True,
             request_user_attrs={"unread_dialogs_exist": True}
         )
-
         self.assertIn(
-            '<a href="{}" id="logout"> Log Out'.format(reverse("logout")),
+            '<a href="{}">'.format(reverse("account")),
+            html_code
+        )
+        self.assertIn(
+            '<a href="{}" id="logout">Log Out'.format(reverse("logout")),
             html_code
         )
 
@@ -80,4 +83,16 @@ class TestBase(CustomTestCase):
         self.assertIn(
             '<script type="text/javascript" src="/static/common/js/base.js">',
             html_code
+        )
+
+
+class TestAccount(CustomTestCase):
+    def test(self):
+        html_code = self.render(
+            "common/account.html", is_authorised=True,
+            request_user_attrs={"username": "name"}
+        )
+        self.assertIn("<title>Account</title>", html_code)
+        self.assertIn(
+            "Your username: {}".format("name"), html_code
         )

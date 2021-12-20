@@ -5,8 +5,7 @@
 {% block title %}{% trans "Dialog" %} {{ interlocutor.id }}{% endblock %}
 
 {% block content %}
-  <b>{% trans "User" %} {{ interlocutor.id }}</b>:
-  <br>
+  <h3>{% trans "User" %} {{ interlocutor.id }}</h3>
 
   <b> {% trans "Messages" context "User messages" %} </b>: <br>
   <div id="dialog-messages"></div>

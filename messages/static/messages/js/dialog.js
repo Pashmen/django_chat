@@ -84,7 +84,7 @@ function socketOnMessageHandler(ev) {
     } else if (command === "check_integrity") {
         m.checkIntegrity(data["integrity_hash"]);
     } else if (command === "go_home") {
-        window.location.href = "/home/";
+        window.location.href = "/account/";
     } else {
         console.warn("Invalid command");
     }

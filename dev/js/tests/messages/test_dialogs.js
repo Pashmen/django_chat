@@ -156,7 +156,7 @@ describe("socketOnMessageHandler", () => {
         const ev = {data: JSON.stringify({"command": "go_home"})};
 
         dialogs.socketOnMessageHandler(ev);
-        expect(window.location.href).toBe("/home/");
+        expect(window.location.href).toBe("/account/");
 
         window.location = oldValue;
     });

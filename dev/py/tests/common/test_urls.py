@@ -3,6 +3,7 @@ from django.contrib.auth.views import LogoutView
 from django.urls import resolve
 from django.urls import reverse
 
+from common.views import account_view
 from dev.py.utils import CustomTestCase
 
 
@@ -27,4 +28,12 @@ class TestUrls(CustomTestCase):
         self.assertEqual(
             resolve("/logout/").func.view_class,
             LogoutView
+        )
+
+    def test_account(self):
+        self.assertEqual(reverse("account"), "/account/")
+
+        self.assertEqual(
+            resolve("/account/").func,
+            account_view
         )

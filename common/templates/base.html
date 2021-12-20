@@ -17,9 +17,10 @@
     {% else %}
       <a href="{% url 'dialogs' %}" id="dialogs-link" class="unread-dialogs-exist">{% trans "Dialogs" %}</a> |
     {% endif %}
-    <a href="{% url 'logout' %}" id="logout"> {% trans "Log Out" %} </a>
+    <a href="{% url 'account' %}">{% trans "Account" %}</a> |
+    <a href="{% url 'logout' %}" id="logout">{% trans "Log Out" %}</a>
   {% else %}
-    <a href="{% url 'login' %}"> {% trans "Log In" %} </a>
+    <a href="{% url 'login' %}">{% trans "Log In" %}</a>
   {% endif %}
 
   <hr>
